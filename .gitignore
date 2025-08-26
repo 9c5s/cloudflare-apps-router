@@ -165,3 +165,7 @@ dist
 .env*
 !.env.example
 .wrangler/
+
+# Cloudflare Workers auto-generated types
+
+worker-configuration.d.ts

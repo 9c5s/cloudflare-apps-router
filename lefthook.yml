@@ -1,0 +1,27 @@
+pre-commit:
+  piped: true
+  jobs:
+    - name: lefthook validate
+      glob: lefthook.yml
+      run: bun run lefthook validate
+
+    - name: gitleaks
+      run: bun run gitleaks protect --staged --verbose
+
+    - name: check types
+      glob: wrangler.jsonc
+      run: bun run cf-typegen
+
+    - name: format and lint
+      run: bun run biome check --write --error-on-warnings --no-errors-on-unmatched {staged_files}
+      stage_fixed: true
+
+
+pre-push:
+  piped: true
+  jobs:
+    - name: lint
+      run: bun run lint
+
+    - name: test
+      run: bun run test:run

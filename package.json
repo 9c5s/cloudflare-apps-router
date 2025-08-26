@@ -7,10 +7,18 @@
 		"dev": "wrangler dev",
 		"start": "wrangler dev",
 		"test": "vitest",
-		"cf-typegen": "wrangler types"
+		"test:run": "vitest run",
+		"cf-typegen": "wrangler types",
+		"format": "biome format --write .",
+		"lint": "biome lint --error-on-warnings --write .",
+		"check": "biome check --error-on-warnings --write .",
+		"postinstall": "lefthook install && wrangler types"
 	},
 	"devDependencies": {
+		"@biomejs/biome": "^2.2.2",
 		"@cloudflare/vitest-pool-workers": "^0.8.19",
+		"gitleaks": "^1.0.0",
+		"lefthook": "^1.12.3",
 		"typescript": "^5.5.2",
 		"vitest": "~3.2.0",
 		"wrangler": "^4.32.0"
