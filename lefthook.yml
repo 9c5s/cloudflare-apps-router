@@ -10,7 +10,7 @@ pre-commit:
 
     - name: check types
       glob: wrangler.jsonc
-      run: bun run cf-typegen
+      run: bun run typegen
 
     - name: format and lint
       run: bunx biome check --write --error-on-warnings --no-errors-on-unmatched {staged_files}
