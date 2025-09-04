@@ -3,17 +3,17 @@ pre-commit:
   jobs:
     - name: lefthook validate
       glob: lefthook.yml
-      run: bun run lefthook validate
+      run: bunx lefthook validate
 
     - name: gitleaks
-      run: bun run gitleaks protect --staged --verbose
+      run: bunx gitleaks protect --staged --verbose
 
     - name: check types
       glob: wrangler.jsonc
       run: bun run cf-typegen
 
     - name: format and lint
-      run: bun run biome check --write --error-on-warnings --no-errors-on-unmatched {staged_files}
+      run: bunx biome check --write --error-on-warnings --no-errors-on-unmatched {staged_files}
       stage_fixed: true
 
 
